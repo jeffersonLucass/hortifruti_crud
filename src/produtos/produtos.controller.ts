@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, NotFoundException } from '@nestjs/common';
 import { ProdutosService } from './produtos.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
@@ -17,18 +17,27 @@ export class ProdutosController {
     return this.produtosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.produtosService.findOne(+id);
+@Get(':id')
+  async findOne(@Param('id') id: string) {
+    const produtos = await this.produtosService.findOne(id);
+    if (!produtos) throw new NotFoundException()
+    return produtos
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
-    return this.produtosService.update(+id, updateProdutoDto);
+  async update(
+    @Param('id') id: string, 
+    @Body() updateProdutoDto: UpdateProdutoDto
+  ){
+    const produtos = await this.produtosService.update(id, updateProdutoDto);
+    if (!produtos) throw new NotFoundException()
+    return produtos
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.produtosService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const produtos = await this.produtosService.remove(id);
+    if (!produtos) throw new NotFoundException()
   }
 }

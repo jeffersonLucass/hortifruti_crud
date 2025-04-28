@@ -1,0 +1,147 @@
+//produtos
+GET http://localhost:3000/produtos
+
+GET http://localhost:3000/produtos
+
+POST http://localhost:3000/produtos
+Content-Type: application/json
+
+{
+  "nome": "João victor",
+  "descricao": "jvlegalexamplecom",
+  "preco": 50.55,
+  "categoria_id": "12",
+  "estoque": 10
+}
+
+PATCH  http://localhost:3000/produtos
+
+DELETE http://localhost:3000/produtos
+
+
+//carrinho
+GET http://localhost:3000/carrinho
+
+GET http://localhost:3000/carrinho
+
+POST http://localhost:3000/carrinho
+Content-Type: application/json
+
+{
+  "usuario_id": "hjioh54432",
+  "total": 1000 
+}
+
+PATCH  http://localhost:3000/carrinho
+
+DELETE http://localhost:3000/carrinho
+
+
+//item-carrinho
+GET http://localhost:3000/item_carrinho
+
+GET http://localhost:3000/item_carrinho
+
+POST http://localhost:3000/item_carrinho
+
+PATCH  http://localhost:3000/item_carrinho
+
+DELETE http://localhost:3000/item_carrinho
+
+
+//categorias
+
+GET http://localhost:3000/categorias
+
+GET http://localhost:3000/categorias
+
+POST http://localhost:3000/categorias
+Content-Type: application/json
+
+{
+  "nome": "verdura"
+}
+PATCH  http://localhost:3000/categorias
+
+DELETE http://localhost:3000/categorias
+
+
+//pedidos
+GET http://localhost:3000/pedidos
+
+GET http://localhost:3000/pedidos
+
+POST http://localhost:3000/pedidos
+
+PATCH  http://localhost:3000/pedidos
+
+DELETE http://localhost:3000/pedidos
+
+
+//usuarios
+GET http://localhost:3000/usuarios
+
+GET http://localhost:3000/usuarios
+
+POST http://localhost:3000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "João victor",
+  "email": "jvlegal@example.com",
+  "senha": "124436",
+  "telefone": "229234999",
+  "endereco": "bairro lagal, 1234"
+}
+
+PATCH  http://localhost:3000/usuarios
+
+DELETE http://localhost:3000/usuarios
+
+
+//pagamento
+GET http://localhost:3000/pagamento
+
+GET http://localhost:3000/pagamento
+
+POST http://localhost:3000/pagamento
+
+PATCH  http://localhost:3000/pagamento
+
+DELETE http://localhost:3000/pagamento
+
+
+//entrega
+GET http://localhost:3000/entrega
+
+GET http://localhost:3000/entrega
+
+POST http://localhost:3000/entrega
+
+PATCH  http://localhost:3000/entrega
+
+DELETE http://localhost:3000/entrega
+
+
+//endereco
+GET http://localhost:3000/endereco
+
+GET http://localhost:3000/endereco
+
+POST http://localhost:3000/endereco
+
+PATCH  http://localhost:3000/endereco
+
+DELETE http://localhost:3000/endereco
+
+
+//avaliacao
+GET http://localhost:3000/avaliacao
+
+GET http://localhost:3000/avaliacao
+
+POST http://localhost:3000/avaliacao
+
+PATCH  http://localhost:3000/avaliacao
+
+DELETE http://localhost:3000/avaliacao

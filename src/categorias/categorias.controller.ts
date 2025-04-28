@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, NotFoundException } from '@nestjs/common';
 import { CategoriasService } from './categorias.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
@@ -18,17 +18,26 @@ export class CategoriasController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.categoriasService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const categorias = await this.categoriasService.findOne(id);
+    if (!categorias) throw new NotFoundException()
+    return categorias
   }
-
+  
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCategoriaDto: UpdateCategoriaDto) {
-    return this.categoriasService.update(+id, updateCategoriaDto);
+  async update(
+    @Param('id') id: string, 
+    @Body() updateCategoriaDto: UpdateCategoriaDto
+  ){
+    const categorias = await this.categoriasService.update(id, updateCategoriaDto);
+    if (!categorias) throw new NotFoundException()
+    return categorias
   }
-
+  
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.categoriasService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const categorias = await this.categoriasService.remove(id);
+    if (!categorias) throw new NotFoundException()
   }
 }

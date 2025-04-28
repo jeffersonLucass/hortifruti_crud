@@ -1,4 +1,5 @@
 import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+const{nanoid} = require("nanoid")
 
 @Entity('usuarios')
 export class Usuario {
@@ -21,10 +22,8 @@ export class Usuario {
     @Column()
     endereco:string
 
-    
-
     @BeforeInsert()
     generateId() {
-        this.id = 'dev_$(nanoid())';
+        this.id = `dev_${nanoid()}`;
     }   
-}
+}   
