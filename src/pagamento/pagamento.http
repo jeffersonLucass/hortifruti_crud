@@ -1,0 +1,10 @@
+
+GET http://localhost:3000/pagamento
+
+GET http://localhost:3000/pagamento
+
+POST http://localhost:3000/pagamento
+
+PATCH  http://localhost:3000/pagamento
+
+DELETE http://localhost:3000/pagamento

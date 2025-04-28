@@ -1,0 +1,10 @@
+
+GET http://localhost:3000/entrega
+
+GET http://localhost:3000/entrega
+
+POST http://localhost:3000/entrega
+
+PATCH  http://localhost:3000/entrega
+
+DELETE http://localhost:3000/entrega

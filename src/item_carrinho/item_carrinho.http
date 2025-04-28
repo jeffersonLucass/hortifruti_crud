@@ -1,0 +1,10 @@
+
+GET http://localhost:3000/item_carrinho
+
+GET http://localhost:3000/item_carrinho
+
+POST http://localhost:3000/item_carrinho
+
+PATCH  http://localhost:3000/item_carrinho
+
+DELETE http://localhost:3000/item_carrinho

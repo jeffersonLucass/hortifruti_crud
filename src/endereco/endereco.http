@@ -1,0 +1,10 @@
+
+GET http://localhost:3000/endereco
+
+GET http://localhost:3000/endereco
+
+POST http://localhost:3000/endereco
+
+PATCH  http://localhost:3000/endereco
+
+DELETE http://localhost:3000/endereco

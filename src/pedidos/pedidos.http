@@ -1,0 +1,10 @@
+
+GET http://localhost:3000/pedidos
+
+GET http://localhost:3000/pedidos
+
+POST http://localhost:3000/pedidos
+
+PATCH  http://localhost:3000/pedidos
+
+DELETE http://localhost:3000/pedidos
