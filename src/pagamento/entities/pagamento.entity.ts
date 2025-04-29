@@ -1,4 +1,5 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, OneToOne } from "typeorm";
+import { Pedido } from "../../pedidos/entities/pedido.entity";
 const { nanoid } = require("nanoid");
 
 @Entity('pagamento')
@@ -15,6 +16,9 @@ export class Pagamento {
 
     @Column()
     data_pagamento: Date;
+
+    @OneToOne(() => Pedido, (pedido) => pedido.pagamento)
+    pedido: Pedido;
 
     @BeforeInsert()
     generateId() {

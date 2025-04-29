@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException, HttpCode } from '@nestjs/common';
 import { AvaliacaoService } from './avaliacao.service';
 import { CreateAvaliacaoDto } from './dto/create-avaliacao.dto';
 import { UpdateAvaliacaoDto } from './dto/update-avaliacao.dto';
@@ -18,17 +18,23 @@ export class AvaliacaoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.avaliacaoService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const avaliacao = await this.avaliacaoService.findOne(id);
+    if (!avaliacao) throw new NotFoundException(`Avaliação com ID ${id} não encontrada`);
+    return avaliacao;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAvaliacaoDto: UpdateAvaliacaoDto) {
-    return this.avaliacaoService.update(+id, updateAvaliacaoDto);
+  async update(@Param('id') id: string, @Body() updateAvaliacaoDto: UpdateAvaliacaoDto) {
+    const avaliacao = await this.avaliacaoService.update(id, updateAvaliacaoDto);
+    if (!avaliacao) throw new NotFoundException(`Avaliação com ID ${id} não encontrada`);
+    return avaliacao;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.avaliacaoService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const avaliacao = await this.avaliacaoService.remove(id);
+    if (avaliacao === null || avaliacao === undefined) throw new NotFoundException(`Avaliação com ID ${id} não encontrada`);
   }
 }

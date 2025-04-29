@@ -1,26 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateAvaliacaoDto } from './dto/create-avaliacao.dto';
 import { UpdateAvaliacaoDto } from './dto/update-avaliacao.dto';
+import { Avaliacao } from './entities/avaliacao.entity';
 
 @Injectable()
 export class AvaliacaoService {
-  create(createAvaliacaoDto: CreateAvaliacaoDto) {
-    return 'This action adds a new avaliacao';
+  constructor(
+    @InjectRepository(Avaliacao)
+    private readonly avaliacaoRepository: Repository<Avaliacao>,
+  ) {}
+
+  async create(createAvaliacaoDto: CreateAvaliacaoDto): Promise<Avaliacao> {
+    const avaliacao = this.avaliacaoRepository.create(createAvaliacaoDto);
+    return await this.avaliacaoRepository.save(avaliacao);
   }
 
-  findAll() {
-    return `This action returns all avaliacao`;
+  async findAll(): Promise<Avaliacao[]> {
+    return await this.avaliacaoRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} avaliacao`;
+  async findOne(id: string): Promise<Avaliacao> {
+    const avaliacao = await this.avaliacaoRepository.findOne({ where: { id } });
+    if (!avaliacao) {
+      throw new NotFoundException(`Avaliação com ID ${id} não encontrada`);
+    }
+    return avaliacao;
   }
 
-  update(id: number, updateAvaliacaoDto: UpdateAvaliacaoDto) {
-    return `This action updates a #${id} avaliacao`;
+  async update(id: string, updateAvaliacaoDto: UpdateAvaliacaoDto): Promise<Avaliacao> {
+    const avaliacao = await this.findOne(id);
+    Object.assign(avaliacao, updateAvaliacaoDto);
+    return await this.avaliacaoRepository.save(avaliacao);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} avaliacao`;
+  async remove(id: string): Promise<void> {
+    const avaliacao = await this.findOne(id);
+    await this.avaliacaoRepository.remove(avaliacao);
   }
 }

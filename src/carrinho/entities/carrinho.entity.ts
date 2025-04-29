@@ -1,20 +1,25 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
-const { nanoid } = require("nanoid")
+import { BeforeInsert, Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Usuario } from "../../usuarios/entities/usuario.entity";
+import { ItemCarrinho } from "../../item_carrinho/entities/item_carrinho.entity";
+const { nanoid } = require("nanoid");
 
 @Entity('carrinho')
 export class Carrinho {
 
     @PrimaryColumn()
-    id: string
+    id: string;
+
+    @ManyToOne(() => Usuario, (usuario) => usuario.carrinhos)
+    usuario: Usuario;
+
+    @OneToMany(() => ItemCarrinho, (itemCarrinho) => itemCarrinho.carrinho)
+    itens: ItemCarrinho[];
 
     @Column()
-    usuario_id:string
-    
-    @Column()
-    total:number
+    total: number;
 
     @BeforeInsert()
-    generateId(){
-        this.id = `dev_${nanoid()}`
+    generateId() {
+        this.id = `dev_${nanoid()}`;
     }
 }

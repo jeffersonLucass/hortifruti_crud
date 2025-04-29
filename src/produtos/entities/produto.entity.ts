@@ -1,30 +1,37 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm"
-const{nanoid} = require("nanoid")
-
+import { BeforeInsert, Column, Entity, PrimaryColumn, ManyToOne, OneToMany } from "typeorm";
+import { Categoria } from "../../categorias/entities/categoria.entity";
+import { ItemCarrinho } from "../../item_carrinho/entities/item_carrinho.entity";
+import { Avaliacao } from "../../avaliacao/entities/avaliacao.entity";
+const { nanoid } = require("nanoid");
 
 @Entity('produtos')
 export class Produto { 
-    
     @PrimaryColumn()
-    id: string
+    id: string;
 
     @Column()
-    nome: string
+    nome: string;
 
     @Column()
-    descricao: string
+    descricao: string;
 
     @Column()
-    preco: number
+    preco: number;
 
     @Column()
-    categoria_id: string
+    estoque: number;
 
-    @Column()
-    estoque: number
+    @ManyToOne(() => Categoria, (categoria) => categoria.produtos)
+    categoria: Categoria;
+
+    @OneToMany(() => ItemCarrinho, (itemCarrinho) => itemCarrinho.produto)
+    itensCarrinho: ItemCarrinho[];
+
+    @OneToMany(() => Avaliacao, (avaliacao) => avaliacao.produto)
+    avaliacoes: Avaliacao[];
 
     @BeforeInsert()
-	generateId() {
-        this.id = `dev_${nanoid()}`;;
-	}
+    generateId() {
+        this.id = `dev_${nanoid()}`;
+    }
 }

@@ -1,4 +1,6 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, ManyToOne } from "typeorm";
+import { Carrinho } from "../../carrinho/entities/carrinho.entity";
+import { Produto } from "../../produtos/entities/produto.entity";
 const { nanoid } = require("nanoid");
 
 @Entity('item_carrinho')
@@ -7,11 +9,11 @@ export class ItemCarrinho {
     @PrimaryColumn()
     id: string;
 
-    @Column()
-    carrinho_id: string;
+    @ManyToOne(() => Carrinho, (carrinho) => carrinho.itens)
+    carrinho: Carrinho;
 
-    @Column()
-    produto_id: string;
+    @ManyToOne(() => Produto, (produto) => produto.itensCarrinho)
+    produto: Produto;
 
     @Column()
     quantidade: number;

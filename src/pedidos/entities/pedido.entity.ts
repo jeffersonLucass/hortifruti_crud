@@ -1,4 +1,7 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, ManyToOne, OneToOne, JoinColumn } from "typeorm";
+import { Usuario } from "../../usuarios/entities/usuario.entity";
+import { Pagamento } from "../../pagamento/entities/pagamento.entity";
+import { Entrega } from "../../entrega/entities/entrega.entity";
 const { nanoid } = require("nanoid");
 
 @Entity('pedido')
@@ -7,8 +10,8 @@ export class Pedido {
     @PrimaryColumn()
     id: string;
 
-    @Column()
-    usuario_id: string;
+    @ManyToOne(() => Usuario, (usuario) => usuario.pedidos)
+    usuario: Usuario;
 
     @Column()
     data_hora: Date;
@@ -19,8 +22,13 @@ export class Pedido {
     @Column()
     valor_total: number;
 
-    @Column()
-    pagamento_id: string;
+    @OneToOne(() => Pagamento)
+    @JoinColumn()
+    pagamento: Pagamento;
+
+    @OneToOne(() => Entrega)
+    @JoinColumn()
+    entrega: Entrega;
 
     @BeforeInsert()
     generateId() {
