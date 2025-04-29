@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException, HttpCode } from '@nestjs/common';
 import { PedidosService } from './pedidos.service';
 import { CreatePedidoDto } from './dto/create-pedido.dto';
 import { UpdatePedidoDto } from './dto/update-pedido.dto';
@@ -18,17 +18,27 @@ export class PedidosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pedidosService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const pedido = await this.pedidosService.findOne(id);
+    if (!pedido) throw new NotFoundException();
+    return pedido;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePedidoDto: UpdatePedidoDto) {
-    return this.pedidosService.update(+id, updatePedidoDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updatePedidoDto: UpdatePedidoDto,
+  ) {
+    const pedido = await this.pedidosService.update(id, updatePedidoDto);
+    if (!pedido) throw new NotFoundException();
+    return pedido;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.pedidosService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const pedido = await this.pedidosService.remove(id);
+    if (!pedido) throw new NotFoundException();
   }
 }
+

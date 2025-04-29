@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException, HttpCode } from '@nestjs/common';
 import { ItemCarrinhoService } from './item_carrinho.service';
 import { CreateItemCarrinhoDto } from './dto/create-item_carrinho.dto';
 import { UpdateItemCarrinhoDto } from './dto/update-item_carrinho.dto';
@@ -18,17 +18,26 @@ export class ItemCarrinhoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.itemCarrinhoService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const itemCarrinho = await this.itemCarrinhoService.findOne(id);
+    if (!itemCarrinho) throw new NotFoundException();
+    return itemCarrinho;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateItemCarrinhoDto: UpdateItemCarrinhoDto) {
-    return this.itemCarrinhoService.update(+id, updateItemCarrinhoDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateItemCarrinhoDto: UpdateItemCarrinhoDto,
+  ) {
+    const itemCarrinho = await this.itemCarrinhoService.update(id, updateItemCarrinhoDto);
+    if (!itemCarrinho) throw new NotFoundException();
+    return itemCarrinho;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.itemCarrinhoService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const itemCarrinho = await this.itemCarrinhoService.remove(id);
+    if (!itemCarrinho) throw new NotFoundException();
   }
 }

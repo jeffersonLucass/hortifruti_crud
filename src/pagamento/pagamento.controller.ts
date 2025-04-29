@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException, HttpCode } from '@nestjs/common';
 import { PagamentoService } from './pagamento.service';
 import { CreatePagamentoDto } from './dto/create-pagamento.dto';
 import { UpdatePagamentoDto } from './dto/update-pagamento.dto';
@@ -18,17 +18,26 @@ export class PagamentoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pagamentoService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const pagamento = await this.pagamentoService.findOne(id);
+    if (!pagamento) throw new NotFoundException();
+    return pagamento;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePagamentoDto: UpdatePagamentoDto) {
-    return this.pagamentoService.update(+id, updatePagamentoDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updatePagamentoDto: UpdatePagamentoDto,
+  ) {
+    const pagamento = await this.pagamentoService.update(id, updatePagamentoDto);
+    if (!pagamento) throw new NotFoundException();
+    return pagamento;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.pagamentoService.remove(+id);
+  @HttpCode(204)
+  async remove(@Param('id') id: string) {
+    const pagamento = await this.pagamentoService.remove(id);
+    if (!pagamento) throw new NotFoundException();
   }
 }

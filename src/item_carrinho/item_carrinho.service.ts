@@ -1,26 +1,41 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateItemCarrinhoDto } from './dto/create-item_carrinho.dto';
 import { UpdateItemCarrinhoDto } from './dto/update-item_carrinho.dto';
+import { ItemCarrinho } from './entities/item_carrinho.entity';
 
 @Injectable()
 export class ItemCarrinhoService {
-  create(createItemCarrinhoDto: CreateItemCarrinhoDto) {
-    return 'This action adds a new itemCarrinho';
+
+  constructor(
+    @InjectRepository(ItemCarrinho)
+    private readonly repository: Repository<ItemCarrinho>,
+  ) {}
+
+  create(dto: CreateItemCarrinhoDto) {
+    const itemCarrinho = this.repository.create(dto);
+    return this.repository.save(itemCarrinho);
   }
 
   findAll() {
-    return `This action returns all itemCarrinho`;
+    return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} itemCarrinho`;
+  findOne(id: string) {
+    return this.repository.findOneBy({ id });
   }
 
-  update(id: number, updateItemCarrinhoDto: UpdateItemCarrinhoDto) {
-    return `This action updates a #${id} itemCarrinho`;
+  async update(id: string, dto: UpdateItemCarrinhoDto) {
+    const itemCarrinho = await this.repository.findOneBy({ id });
+    if (!itemCarrinho) return null;
+    this.repository.merge(itemCarrinho, dto);
+    return this.repository.save(itemCarrinho);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} itemCarrinho`;
+  async remove(id: string) {
+    const itemCarrinho = await this.repository.findOneBy({ id });
+    if (!itemCarrinho) return null;
+    return this.repository.remove(itemCarrinho);
   }
 }
