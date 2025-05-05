@@ -7,7 +7,7 @@ POST http://localhost:3000/produtos
 Content-Type: application/json
 
 {
-  "nome": "João victor",
+  "nome": "Kaion",
   "descricao": "jvlegalexamplecom",
   "preco": 50.55,
   "categoria_id": "12",
