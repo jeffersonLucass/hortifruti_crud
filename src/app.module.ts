@@ -12,6 +12,7 @@ import { EnderecoModule } from './endereco/endereco.module';
 import { EntregaModule } from './entrega/entrega.module';
 import { AvaliacaoModule } from './avaliacao/avaliacao.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -19,7 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     database: 'db.sqlite',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: true,
-  }),UsuariosModule, ProdutosModule, CategoriasModule, CarrinhoModule, ItemCarrinhoModule, PedidosModule, PagamentoModule, EnderecoModule, EntregaModule, AvaliacaoModule],
+  }),UsuariosModule, ProdutosModule, CategoriasModule, CarrinhoModule, ItemCarrinhoModule, PedidosModule, PagamentoModule, EnderecoModule, EntregaModule, AvaliacaoModule,AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

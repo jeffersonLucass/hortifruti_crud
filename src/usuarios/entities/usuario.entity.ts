@@ -1,8 +1,9 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, OneToMany ,BeforeUpdate} from "typeorm";
 import { Endereco } from "../../endereco/entities/endereco.entity";
 import { Pedido } from "../../pedidos/entities/pedido.entity";
 import { Carrinho } from "../../carrinho/entities/carrinho.entity";
 import { Avaliacao } from "../../avaliacao/entities/avaliacao.entity";
+import * as bcrypt from "bcrypt";
 const { nanoid } = require("nanoid");
 
 @Entity('usuarios')
@@ -38,4 +39,13 @@ export class Usuario {
     generateId() {
         this.id = `dev_${nanoid()}`;
     }
+    @BeforeInsert()
+    @BeforeUpdate()
+    async hashPassword() {
+        if(this.senha) {
+            this.senha = await bcrypt.hash(this.senha, 10);
+        }
+      
+    }
+
 }
