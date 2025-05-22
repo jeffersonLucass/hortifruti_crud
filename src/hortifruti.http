@@ -5,18 +5,35 @@ GET http://localhost:3000/produtos
 
 POST http://localhost:3000/produtos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
 
 {
-  "nome": "Jefferson lucas",
-  "descricao": "jvlegalexamplecom",
-  "preco": 50.55,
-  "categoria_id": "12",
-  "estoque": 10
+  
+  "nome":"Produto 101", 
+  "descricao":"teste",
+  "preco": 7.78, 
+  "categoria_id":"1",
+  "estoque":20 
 }
 
-PATCH  http://localhost:3000/produtos
+PATCH  http://localhost:3000/produtos/dev_ArOBd1iFcs8UVRxVIc3CH
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
 
-DELETE http://localhost:3000/produtos
+{
+  "nome":"teste02", 
+  "descricao":"teste",
+  "preco": 7.78, 
+  "categoria_id":"1",
+  "estoque":20 
+}
+
+DELETE http://localhost:3000/produtos/dev_gqwOvK8eV5JvQ9kOfcR88
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
+
+
+
 
 
 //carrinho
