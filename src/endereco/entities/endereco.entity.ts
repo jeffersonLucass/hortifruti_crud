@@ -15,14 +15,8 @@ export class Endereco {
     @Column()
     bairro: string;
 
-    @Column()
-    cidade: string;
-
     @Column({ nullable: true })
     complemento?: string;
-
-    @Column()
-    cep: string;
 
     @ManyToOne(() => Usuario, (usuario) => usuario.enderecos)
     usuario: Usuario;
