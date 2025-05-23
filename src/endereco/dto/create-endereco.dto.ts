@@ -14,13 +14,7 @@ export class CreateEnderecoDto {
   @IsString()
   bairro: string;
 
-  @IsString()
-  cidade: string;
-
   @IsOptional()
   @IsString()
   complemento?: string;
-
-  @IsString()
-  cep: string;
 }
