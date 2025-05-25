@@ -23,9 +23,6 @@ export class Usuario {
     @Column()
     telefone: string;
 
-    @OneToMany(() => Endereco, (endereco) => endereco.usuario)
-    enderecos: Endereco[];
-
     @OneToMany(() => Pedido, (pedido) => pedido.usuario)
     pedidos: Pedido[];
 

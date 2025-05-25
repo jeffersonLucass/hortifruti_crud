@@ -28,3 +28,4 @@ import { LojaModule } from './loja/loja.module';
   providers: [AppService],
 })
 export class AppModule {}
+
