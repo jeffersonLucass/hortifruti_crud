@@ -17,8 +17,21 @@ export class ProdutosService {
     return this.repository.save(produtos);
   }
   
-  findAll() {
-    return this.repository.find();
+  async findAll(categoriaId?: number) {
+    if (categoriaId) {
+      return this.repository.find({
+        where: {
+          categoria: {
+            id: categoriaId.toString(), // converte para string
+          },
+        },
+        relations: ['categoria'],
+      });
+    }
+  
+    return this.repository.find({
+      relations: ['categoria'],
+    });
   }
   
   findOne(id: string) {

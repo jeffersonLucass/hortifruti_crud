@@ -1,43 +1,47 @@
 //produtos
 GET http://localhost:3000/produtos
 
+###
+
 GET http://localhost:3000/produtos
 
 ###
 
 POST http://localhost:3000/produtos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfdzJtWnhZdVBaY2xfTnRfRGUwU1Q2Iiwibm9tZVVzdWFyaW8iOiJsdWNhcyIsImlhdCI6MTc0ODI2MzgyOSwiZXhwIjoxNzQ4MjY3NDI5fQ.h16IFH61wq3Rtf9v_EJXYmWswTcGyA97hUF_ZZ5j8gg 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfdzJtWnhZdVBaY2xfTnRfRGUwU1Q2Iiwibm9tZVVzdWFyaW8iOiJsdWNhcyIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzQ4Mjk2MjI4LCJleHAiOjE3NDgyOTk4Mjh9.QwkvT2kFzUEyqVGsEJMhR4tG9sFCI7SmCTtRTMhbla8
 
 {
   
-  "nome":"bala", 
-  "descricao":"teste",
-  "preco": 10.50, 
+  "nome":"balinha", 
+  "descricao":"teste1",
+  "preco": 1.50, 
   "categoria_id":"3",
   "estoque":20 
 }
 
 ###
 
-PATCH  http://localhost:3000/produtos/dev_ArOBd1iFcs8UVRxVIc3CH
+PATCH  http://localhost:3000/produtos/dev_upyFxt-jne7jRUVlPmDyW
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODI5NTkyMiwiZXhwIjoxNzQ4Mjk5NTIyfQ.7_dbBoIuu1rAbLAyGjuLlZK8qpaCaZU45ygwgUsCd7g
 
 {
-  "nome":"teste02", 
+  "nome":"pedra", 
   "descricao":"teste",
   "preco": 7.78, 
   "categoria_id":"1",
   "estoque":20 
 }
 
-DELETE http://localhost:3000/produtos/dev_N138vNZnGEp73Z0YtCPHf
+###
+
+DELETE http://localhost:3000/produtos/dev_hjH67hV0vxYD6rzFHK78f
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfdzJtWnhZdVBaY2xfTnRfRGUwU1Q2Iiwibm9tZVVzdWFyaW8iOiJsdWNhcyIsImlhdCI6MTc0ODI2MzgyOSwiZXhwIjoxNzQ4MjY3NDI5fQ.h16IFH61wq3Rtf9v_EJXYmWswTcGyA97hUF_ZZ5j8gg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODI5NTkyMiwiZXhwIjoxNzQ4Mjk5NTIyfQ.7_dbBoIuu1rAbLAyGjuLlZK8qpaCaZU45ygwgUsCd7g
 
 
-
+###
 
 
 //carrinho
@@ -99,23 +103,33 @@ PATCH  http://localhost:3000/pedidos
 DELETE http://localhost:3000/pedidos
 
 
+###
+
 //usuarios
 GET http://localhost:3000/usuarios
 
+###
+
 GET http://localhost:3000/usuarios
+
+###
 
 POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-  "nome": "João victor",
+  "nome": "Pedro",
   "email": "jvlegal@example.com",
-  "senha": "124436",
-  "telefone": "229234999",
-  "endereco": "bairro lagal, 1234"
+  "senha": "112233",
+  "telefone": "44444444444",
+  "endereco": "bairro massa, 1000"
 }
 
+###
+
 PATCH  http://localhost:3000/usuarios
+
+###
 
 DELETE http://localhost:3000/usuarios
 
