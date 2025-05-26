@@ -21,5 +21,8 @@ export class CidadeController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const cidade = await this.cidadeService.findOne(id);
-    if (!cidade) throw new NotFoundException(`Cidade com id ${id}
+    if (!cidade) throw new NotFoundException(`Cidade com id ${id}`)
+    return cidade;
+  }
+}
 
