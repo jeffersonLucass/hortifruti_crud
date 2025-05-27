@@ -36,9 +36,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4d
 
 ###
 
-DELETE http://localhost:3000/produtos/dev_hjH67hV0vxYD6rzFHK78f
+DELETE http://localhost:3000/produtos/dev_8HG2CbeQ47wBdS3MZrATu
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODI5NTkyMiwiZXhwIjoxNzQ4Mjk5NTIyfQ.7_dbBoIuu1rAbLAyGjuLlZK8qpaCaZU45ygwgUsCd7g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfWnNKdWRpMXFpZEF0dFQxXzR3MHduIiwibm9tZVVzdWFyaW8iOiJKZWZmZXJzb24gUm9kcmlndWVzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDgzMDQ2NzQsImV4cCI6MTc0ODMwODI3NH0.iaLFYimGmPFtu8A3LqBe_ADMYRracI3JKrJRTtFZYzM
 
 
 ###
@@ -127,7 +127,7 @@ Content-Type: application/json
 
 ###
 
-PATCH  http://localhost:3000/usuarios
+PATCH  http://localhost:3000/usuarios/
 
 ###
 
