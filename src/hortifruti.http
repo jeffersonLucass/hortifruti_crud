@@ -24,10 +24,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfdzJtW
 
 PATCH  http://localhost:3000/produtos/dev_upyFxt-jne7jRUVlPmDyW
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODI5NTkyMiwiZXhwIjoxNzQ4Mjk5NTIyfQ.7_dbBoIuu1rAbLAyGjuLlZK8qpaCaZU45ygwgUsCd7g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfQldQSVNQSFhaSmxselctaGtxS21mIiwibm9tZVVzdWFyaW8iOiJHdXN0YXZvIE0iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDgzMDY4MTIsImV4cCI6MTc0ODMxMDQxMn0.Ac8q-HTn-fynILtDGbLYOMQB5vrOVWKA_7du86FcHGs
 
 {
-  "nome":"pedra", 
+  "nome":"cuscuz", 
   "descricao":"teste",
   "preco": 7.78, 
   "categoria_id":"1",
@@ -90,7 +90,7 @@ PATCH  http://localhost:3000/categorias
 
 DELETE http://localhost:3000/categorias
 
-
+###
 //pedidos
 GET http://localhost:3000/pedidos
 
