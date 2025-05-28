@@ -33,7 +33,7 @@ export class ProdutosController {
 
   @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(UserRole.USER, UserRole.ADMIN)
+  @Roles(UserRole.MANAGER)
   async update(
     @Param('id') id: string,
     @Body() updateProdutoDto: UpdateProdutoDto
@@ -45,7 +45,7 @@ export class ProdutosController {
 
   @Delete(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(UserRole.USER, UserRole.ADMIN)
+  @Roles(UserRole.ADMIN)
   @HttpCode(204)
   async remove(@Param('id') id: string) {
     const produtos = await this.produtosService.remove(id);
