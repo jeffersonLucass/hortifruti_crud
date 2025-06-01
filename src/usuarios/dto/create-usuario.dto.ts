@@ -1,7 +1,8 @@
-import { IsString, IsEmail } from "class-validator";
+import { IsString, IsEmail, ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
+import { Endereco } from "../../endereco/entities/endereco.entity";
 
 export class CreateUsuarioDto {
-    
     @IsString()
     nome: string;
     
@@ -14,6 +15,8 @@ export class CreateUsuarioDto {
     @IsString()
     telefone: string;
 
-    @IsString()
-    endereco: string;
+    @ValidateNested()
+    @Type(() => Endereco)
+    @IsOptional()
+    endereco?: Partial<Endereco>;
 }

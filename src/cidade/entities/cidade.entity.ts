@@ -1,12 +1,11 @@
-// src/cidade/entities/cidade.entity.ts
-import { Entity, PrimaryColumn, Column, ManyToOne, OneToMany, JoinColumn, BeforeInsert } from 'typeorm'; // Alterado para PrimaryColumn
+import { Entity, PrimaryColumn, Column, ManyToOne, OneToMany, JoinColumn, BeforeInsert } from 'typeorm';
 import { Uf } from '../../uf/entities/uf.entity';
 import { Endereco } from '../../endereco/entities/endereco.entity';
-import { nanoid } from 'nanoid'; // Importação ES Modules
+import { nanoid } from 'nanoid';
 
 @Entity('cidades')
 export class Cidade {
-  @PrimaryColumn({ type: 'varchar', length: 255 }) // Definindo explicitamente o tipo e tamanho, já que você controla a geração
+  @PrimaryColumn({ type: 'varchar', length: 255 }) 
   id: string;
 
   @Column({ length: 100, nullable: false })
@@ -24,7 +23,7 @@ export class Cidade {
 
   @BeforeInsert()
   generateId() {
-    if (!this.id) { // Apenas gera o ID se ele ainda não foi definido
+    if (!this.id) {
       this.id = `dev_${nanoid()}`;
     }
   }

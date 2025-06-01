@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn, OneToMany ,BeforeUpdate} from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryColumn, OneToMany ,BeforeUpdate, OneToOne, JoinColumn} from "typeorm";
 import { Endereco } from "../../endereco/entities/endereco.entity";
 import { Pedido } from "../../pedidos/entities/pedido.entity";
 import { Carrinho } from "../../carrinho/entities/carrinho.entity";
@@ -37,6 +37,10 @@ export class Usuario {
 
     @OneToMany(() => Avaliacao, (avaliacao) => avaliacao.usuario)
     avaliacoes: Avaliacao[];
+
+    @OneToOne(() => Endereco, (endereco) => endereco.usuario)
+    @JoinColumn()
+    endereco: Endereco;
 
     @Column({
         type: 'varchar',

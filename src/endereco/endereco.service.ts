@@ -22,7 +22,7 @@ export class EnderecoService {
   }
 
   async findOne(id: string): Promise<Endereco> {
-    const endereco = await this.enderecoRepository.findOne({ where: { id: Number(id) } });
+    const endereco = await this.enderecoRepository.findOne({ where: { id } });
     if (!endereco) {
       throw new NotFoundException(`Endereço com ID ${id} não encontrado`);
     }

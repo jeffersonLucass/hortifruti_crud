@@ -1,12 +1,12 @@
-// src/endereco/entities/endereco.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany } from 'typeorm'; // Adicione OneToMany
-import { Cidade } from '../../cidade/entities/cidade.entity'; // Caminho relativo ajustado para o seu projeto
-import { Loja } from '../../loja/entities/loja.entity'; // Importa a entidade Loja
-import { Entrega } from '../../entrega/entities/entrega.entity'; // Importa a entidade Entrega
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany } from 'typeorm'; 
+import { Cidade } from '../../cidade/entities/cidade.entity';
+import { Loja } from '../../loja/entities/loja.entity';
+import { Entrega } from '../../entrega/entities/entrega.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity'; 
 
 @Entity('enderecos')
 export class Endereco {
-  @PrimaryGeneratedColumn('uuid') // Mantive UUID aqui, já que o Endereco pode não ter geração de ID customizada
+  @PrimaryGeneratedColumn('uuid') 
   id: string;
 
   @Column({ length: 255, nullable: false })
@@ -24,15 +24,17 @@ export class Endereco {
   @Column({ length: 9, nullable: false })
   cep: string;
 
-  // Relacionamento Many-to-One com Cidade
   @ManyToOne(() => Cidade, cidade => cidade.enderecos)
   @JoinColumn({ name: 'cidadeId' })
   cidade: Cidade;
 
+  @OneToOne(() => Usuario, usuario => usuario.endereco)
+  @JoinColumn()
+  usuario: Usuario;
+
   @Column({ nullable: false })
   cidadeId: string;
 
-  // --- NOVO RELACIONAMENTO: Um Endereço pode ser o destino de várias Entregas ---
   @OneToMany(() => Entrega, entrega => entrega.enderecoDestino)
   entregas: Entrega[];
 }
