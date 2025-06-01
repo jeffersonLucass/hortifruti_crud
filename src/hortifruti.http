@@ -1,39 +1,43 @@
 //produtos
 GET http://localhost:3000/produtos
 
+###
+
 GET http://localhost:3000/produtos
+
+###
 
 POST http://localhost:3000/produtos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODQzNDk3MywiZXhwIjoxNzQ4NDM4NTczfQ.MzhMob4qe3EpkGL8v-1GgrLTd_wAXHlOgtvI0MTevJs
 
 {
   
-  "nome":"Produto 101", 
-  "descricao":"teste",
-  "preco": 7.78, 
-  "categoria_id":"1",
-  "estoque":20 
+  "nome":"linguiça de frango",
+  "descricao":"Carne bovina moída, ideal para diversos pratos.", 
+  "preco": 4.50, 
+  "categoria_id":"dev_7vATMgi6tuiNN8adQOnVU",
+  "estoque": 50 
 }
 
-PATCH  http://localhost:3000/produtos/dev_ArOBd1iFcs8UVRxVIc3CH
+###
+
+PATCH  http://localhost:3000/produtos/dev__crtGvr2kgoP4sw3Ng1ZO
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfWnNKdWRpMXFpZEF0dFQxXzR3MHduIiwibm9tZVVzdWFyaW8iOiJKZWZmZXJzb24gUm9kcmlndWVzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDgzOTMyOTAsImV4cCI6MTc0ODM5Njg5MH0.58KsjTWN3JkNFC1uxqFrQFDzfc-ggEsuvevnM_6Ffhg
 
 {
-  "nome":"teste02", 
-  "descricao":"teste",
-  "preco": 7.78, 
-  "categoria_id":"1",
-  "estoque":20 
+  "nome":"feijao branco"
 }
 
-DELETE http://localhost:3000/produtos/dev_gqwOvK8eV5JvQ9kOfcR88
+###
+
+DELETE http://localhost:3000/produtos/dev__crtGvr2kgoP4sw3Ng1ZO
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJpYXQiOjE3NDc4NzQ5NTAsImV4cCI6MTc0Nzg3ODU1MH0.tMpQZbiK3hXYrEEXvxylxftGsNc8uGfcjiup5AuzmDU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfWnNKdWRpMXFpZEF0dFQxXzR3MHduIiwibm9tZVVzdWFyaW8iOiJKZWZmZXJzb24gUm9kcmlndWVzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDgzOTMyOTAsImV4cCI6MTc0ODM5Njg5MH0.58KsjTWN3JkNFC1uxqFrQFDzfc-ggEsuvevnM_6Ffhg
 
 
-
+###
 
 
 //carrinho
@@ -67,6 +71,7 @@ DELETE http://localhost:3000/item_carrinho
 
 
 //categorias
+###
 
 GET http://localhost:3000/categorias
 
@@ -82,7 +87,7 @@ PATCH  http://localhost:3000/categorias
 
 DELETE http://localhost:3000/categorias
 
-
+###
 //pedidos
 GET http://localhost:3000/pedidos
 
@@ -95,25 +100,37 @@ PATCH  http://localhost:3000/pedidos
 DELETE http://localhost:3000/pedidos
 
 
+###
+
 //usuarios
 GET http://localhost:3000/usuarios
 
+###
+
 GET http://localhost:3000/usuarios
+
+###
 
 POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-  "nome": "João victor",
+  "nome": "Pedro",
   "email": "jvlegal@example.com",
-  "senha": "124436",
-  "telefone": "229234999",
-  "endereco": "bairro lagal, 1234"
+  "senha": "112233",
+  "telefone": "44444444444",
+  "endereco": "bairro massa, 1000"
 }
 
-PATCH  http://localhost:3000/usuarios
+###
 
-DELETE http://localhost:3000/usuarios
+PATCH  http://localhost:3000/usuarios/
+
+###
+
+DELETE http://localhost:3000/usuarios/dev_ksvYSPaEBK48INnrbU-iJ
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfQldQSVNQSFhaSmxselctaGtxS21mIiwibm9tZVVzdWFyaW8iOiJHdXN0YXZvIE0iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDgzOTIzNzEsImV4cCI6MTc0ODM5NTk3MX0.jLqenihUDmYCTv1VpVG1LXSyIGrvrwiDe6EpqheGWxk
 
 
 //pagamento

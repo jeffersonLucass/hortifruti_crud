@@ -6,9 +6,13 @@ import { Usuario } from 'src/usuarios/entities/usuario.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
+import { UsuariosService } from 'src/usuarios/usuarios.service';
+import { UsuariosModule } from '../usuarios/usuarios.module';
+import { RolesGuard } from './roles.guard';
 
 @Module({
   imports: [
+    UsuariosModule,
     TypeOrmModule.forFeature([Usuario]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
@@ -16,8 +20,8 @@ import { PassportModule } from '@nestjs/passport';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, UsuariosService, RolesGuard],
   controllers: [AuthController],
-  exports: [JwtStrategy, PassportModule],
+  exports: [JwtStrategy, PassportModule, RolesGuard],
 })
 export class AuthModule { }

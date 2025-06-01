@@ -6,6 +6,12 @@ import { Avaliacao } from "../../avaliacao/entities/avaliacao.entity";
 import * as bcrypt from "bcrypt";
 const { nanoid } = require("nanoid");
 
+export enum UserRole {
+    USER = 'USER',
+    MANAGER = 'MANAGER',
+    ADMIN = 'ADMIN',
+}
+
 @Entity('usuarios')
 export class Usuario {
     @PrimaryColumn()
@@ -32,10 +38,17 @@ export class Usuario {
     @OneToMany(() => Avaliacao, (avaliacao) => avaliacao.usuario)
     avaliacoes: Avaliacao[];
 
+    @Column({
+        type: 'varchar',
+        default: UserRole.USER
+    })
+    role: UserRole;
+
     @BeforeInsert()
     generateId() {
         this.id = `dev_${nanoid()}`;
     }
+    
     @BeforeInsert()
     @BeforeUpdate()
     async hashPassword() {
