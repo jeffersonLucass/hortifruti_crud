@@ -22,18 +22,18 @@ export class LojaService {
   }
 
   findOne(id: string) {
-    return this.repository.findOneBy({ id_loja: id });
+    return this.repository.findOneBy({ id });
   }
 
   async update(id: string, dto: UpdateLojaDto) {
-    const loja = await this.repository.findOneBy({ id_loja: id });
+    const loja = await this.repository.findOneBy({ id });
     if (!loja) return null;
     this.repository.merge(loja, dto);
     return this.repository.save(loja);
   }
 
   async remove(id: string) {
-    const loja = await this.repository.findOneBy({ id_loja: id });
+    const loja = await this.repository.findOneBy({ id });
     if (!loja) return null;
     return this.repository.remove(loja);
   }

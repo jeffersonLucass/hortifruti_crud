@@ -32,6 +32,10 @@ export class Endereco {
   @JoinColumn()
   usuario: Usuario;
 
+  @OneToOne(() => Loja, loja => loja.endereco)
+  @JoinColumn()
+  loja: Loja;
+
   @Column({ nullable: false })
   cidadeId: string;
 
