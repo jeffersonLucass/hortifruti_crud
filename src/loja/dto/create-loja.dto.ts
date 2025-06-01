@@ -1,45 +1,54 @@
-import { IsString, IsOptional, IsEmail, IsIn } from 'class-validator';
+import { IsString, IsOptional, IsEmail, IsIn, IsBoolean } from 'class-validator';
 
 export class CreateLojaDto {
-  
-  @IsString()
-  id_loja: string;
 
   @IsString()
-  nome_fantasia: string;
-
-  @IsString()
-  razao_social: string;
-
-  @IsString()
-  cnpj: string;
-
-  @IsString()
-  telefone: string;
+  nome: string;
 
   @IsEmail()
   email: string;
 
   @IsString()
-  logradouro: string;
+  senha: string;
 
   @IsString()
-  numero: string;
+  cpf: string;
+
+  @IsOptional()
+  @IsBoolean()
+  ativo?: boolean;
+
+  @IsOptional()
+  @IsString()
+  fotoPerfil?: string;
+
+  @IsOptional()
+  dataCadastro?: Date;
+
+  @IsOptional()
+  enderecoId?: string;
+
+  @IsOptional()
+  @IsString()
+  telefone?: string;
+
+  @IsOptional()
+  @IsString()
+  nome_fantasia?: string;
+
+  @IsOptional()
+  @IsString()
+  razao_social?: string;
+
+  @IsOptional()
+  @IsString()
+  cnpj?: string;
 
   @IsOptional()
   @IsString()
   complemento?: string;
 
-  @IsString()
-  bairro: string;
-
-  @IsString()
-  cidade: string;
-
-  @IsString()
-  uf: string;
-
-  @IsString()
+  @IsOptional()
   @IsIn(['ativa', 'inativa'])
-  status: string;
+  status?: string;
 }

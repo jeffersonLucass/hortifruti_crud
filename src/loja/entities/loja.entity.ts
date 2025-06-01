@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { Endereco } from '../../endereco/entities/endereco.entity';
-// import { Estabelecimento } from '../../estabelecimento/entities/estabelecimento.entity';
 
 @Entity()
 export class Loja {
+  
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -15,9 +15,6 @@ export class Loja {
 
   @Column()
   senha: string;
-
-  @Column()
-  telefone: string;
 
   @Column({ unique: true })
   cpf: string;
@@ -35,6 +32,21 @@ export class Loja {
   @JoinColumn()
   endereco: Endereco;
 
-//   @OneToMany(() => Estabelecimento, estabelecimento => estabelecimento.dono)
-//   estabelecimentos: Estabelecimento[];
+  @Column({ nullable: true })
+  telefone: string;
+
+  @Column({ nullable: true })
+  nome_fantasia: string;
+
+  @Column({ nullable: true })
+  razao_social: string;
+
+  @Column({ nullable: true })
+  cnpj: string;
+
+  @Column({ nullable: true })
+  complemento: string;
+
+  @Column({ nullable: true })
+  status: string;
 }
