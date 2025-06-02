@@ -7,16 +7,8 @@ import { Entrega } from './entities/entrega.entity';
 
 @Injectable()
 export class EntregaService {
-  constructor(
-    @InjectRepository(Entrega)
-    private readonly entregaRepository: Repository<Entrega>,
-  ) {}
-
-  async create(createEntregaDto: CreateEntregaDto): Promise<Entrega> {
-    const entrega = this.entregaRepository.create(createEntregaDto);
-    return await this.entregaRepository.save(entrega);
-  }
-
+  entregaRepository: any;
+  create: any;
   async findAll(): Promise<Entrega[]> {
     return await this.entregaRepository.find();
   }

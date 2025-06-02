@@ -15,8 +15,17 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto): Promise<Usuario> {
-    const usuario = this.usuarioRepository.create(dto);
-    return this.usuarioRepository.save(usuario);
+    const usuario = this.usuarioRepository.create({
+      nome: dto.nome,
+      email: dto.email,
+      senha: dto.senha,
+      telefone: dto.telefone,
+      endereco: { // Assuming 'endereco' is a property of 'Usuario' entity
+        // Add properties from dto.endereco here
+      },
+      // Add other properties from dto as needed
+    });
+    return await this.usuarioRepository.save(usuario);
   }
 
   async login(dto: LoginDto): Promise<{ access_token: string }> {
@@ -30,7 +39,7 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
     };
-  }
+  } 
   
   async validateusuario(nomeUsuario: string, senha: string): Promise<Usuario |
     null> {
