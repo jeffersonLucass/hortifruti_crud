@@ -25,7 +25,7 @@ export class Loja {
   @Column({ nullable: true })
   fotoPerfil: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   dataCadastro: Date;
 
   @OneToOne(() => Endereco, endereco => endereco.loja)
