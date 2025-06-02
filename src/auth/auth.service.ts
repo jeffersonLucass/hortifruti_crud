@@ -20,10 +20,7 @@ export class AuthService {
       email: dto.email,
       senha: dto.senha,
       telefone: dto.telefone,
-      endereco: { // Assuming 'endereco' is a property of 'Usuario' entity
-        // Add properties from dto.endereco here
-      },
-      // Add other properties from dto as needed
+      endereco: {},
     });
     return await this.usuarioRepository.save(usuario);
   }
