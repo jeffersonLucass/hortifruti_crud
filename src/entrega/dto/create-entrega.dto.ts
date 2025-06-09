@@ -1,18 +1,24 @@
-import { IsString, IsNumber, IsEnum, IsDateString } from 'class-validator';
+import { IsString, IsNumber, IsEnum, IsIn, IsDateString } from 'class-validator';
+
+export enum StatusEntrega {
+  PENDENTE = 'PENDENTE',
+  EM_ROTA = 'EM_ROTA',
+  ENTREGUE = 'ENTREGUE',
+  CANCELADA = 'CANCELADA',
+}
 
 export class CreateEntregaDto {
-  
   @IsString()
   id: string;
 
   @IsNumber()
   pedido_id: number;
 
-  @IsEnum(['entrega', 'retirada'])
+  @IsIn(['entrega', 'retirada'])
   tipo: 'entrega' | 'retirada';
 
-  @IsString()
-  status: string;
+  @IsEnum(StatusEntrega)
+  status: StatusEntrega;
 
   @IsDateString()
   data_entrega: string;
