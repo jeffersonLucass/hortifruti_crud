@@ -1,12 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany } from 'typeorm'; 
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany, BeforeInsert } from 'typeorm'; 
 import { Cidade } from '../../cidade/entities/cidade.entity';
 import { Loja } from '../../loja/entities/loja.entity';
 import { Entrega } from '../../entrega/entities/entrega.entity';
 import { Usuario } from 'src/usuarios/entities/usuario.entity'; 
 
+import { nanoid } from 'nanoid';
+
 @Entity('enderecos')
 export class Endereco {
-  @PrimaryGeneratedColumn('uuid') 
+
+  @PrimaryColumn()
   id: string;
 
   @Column({ length: 255, nullable: false })
@@ -25,11 +28,11 @@ export class Endereco {
   cep: string;
 
   @ManyToOne(() => Cidade, cidade => cidade.enderecos)
-  @JoinColumn({ name: 'cidadeId' })
+  @JoinColumn()
   cidade: Cidade;
 
   @OneToOne(() => Usuario, usuario => usuario.endereco)
-  @JoinColumn()
+  @JoinColumn({ name: 'usuarioId'})
   usuario: Usuario;
 
   @OneToOne(() => Loja, loja => loja.endereco)
@@ -41,4 +44,11 @@ export class Endereco {
 
   @OneToMany(() => Entrega, entrega => entrega.enderecoDestino)
   entregas: Entrega[];
+
+  @BeforeInsert()
+    generateId() {
+      if (!this.id) {
+        this.id = `entrega_${nanoid()}`;
+      }
+  }
 }
