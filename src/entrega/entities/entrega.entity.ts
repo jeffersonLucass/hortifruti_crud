@@ -17,7 +17,7 @@ export class Entrega {
   id: string;
 
   @Column({
-    type: 'enum',
+    type: 'text',
     enum: StatusEntrega,
     default: StatusEntrega.PENDENTE,
     nullable: false,
