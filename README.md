@@ -47,7 +47,7 @@ npm run start:prod
 * `db.sqlite` – Banco de dados SQLite
 * `test/` – Testes automatizados
 
-## 📬 Endpoints (exemplos)
+## 📬 Endpoints (exemplos) == conferir
 
 * `GET /produtos` – Lista todos os produtos
 * `POST /fornecedores` – Cria um novo fornecedor
@@ -56,9 +56,10 @@ npm run start:prod
 
 ## 👥 Integrantes
 
+* Grazielly Sabino ([@sabinograzielly](https://github.com/sabinograzielly))
+* Gustavo Scot([@GustavoScot](https://github.com/GustavoScot))
 * Jefferson Lucas ([@jeffersonLucass](https://github.com/jeffersonLucass))
-* \[Nome do integrante 2]
-* \[Nome do integrante 3]
+* Kaion Brandão ([@kaionBLima](https://github.com/kaionBLima))
 
 
 
