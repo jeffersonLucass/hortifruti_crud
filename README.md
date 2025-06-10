@@ -50,7 +50,7 @@ npm run start:prod
 ## 📬 Endpoints (exemplos) == conferir
 
 * `GET /produtos` – Lista todos os produtos
-* `POST /fornecedores` – Cria um novo fornecedor
+* `POST /produtos` – Cria um novo produto
 * `PATCH /produtos/:id` – Atualiza produto
 * `DELETE /pedidos/:id` – Remove pedido
 
