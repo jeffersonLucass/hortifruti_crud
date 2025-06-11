@@ -41,6 +41,12 @@ npm run start:prod
 * E2E: `npm run test:e2e`
 * Cobertura: `npm run test:cov`
 
+## 💻 Caminho Feliz 
+
+* `(admin)` nome: Gustavo M | senha: 112233 | token: (pegar o token gerado no swagger)
+* `(manager)` nome: jefferson | senha: 123456 | token: (pegar o token gerado no swagger)
+* `(user)` nome: Kaion | senha: 123456 | token: (pegar o token gerado no swagger)
+
 ## 📂 Estrutura do Projeto
 
 * `src/` – Código-fonte principal
@@ -57,7 +63,7 @@ npm run start:prod
 ## 👥 Integrantes
 
 * Grazielly Sabino ([@sabinograzielly](https://github.com/sabinograzielly))
-* Gustavo Scot([@GustavoScot](https://github.com/GustavoScot))
+* Gustavo Scot ([@GustavoScot](https://github.com/GustavoScot))
 * Jefferson Lucas ([@jeffersonLucass](https://github.com/jeffersonLucass))
 * Kaion Brandão ([@kaionBLima](https://github.com/kaionBLima))
 
