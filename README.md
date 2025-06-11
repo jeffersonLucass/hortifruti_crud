@@ -47,7 +47,7 @@ npm run start:prod
 * `db.sqlite` – Banco de dados SQLite
 * `test/` – Testes automatizados
 
-## 📬 Endpoints (exemplos) == conferir
+## 📬 Endpoints 
 
 * `GET /produtos` – Lista todos os produtos
 * `POST /produtos` – Cria um novo produto
