@@ -5,7 +5,7 @@ import { UpdateEnderecoDto } from './dto/update-endereco.dto';
 
 @Controller('endereco')
 export class EnderecoController {
-  constructor(private readonly enderecoService: EnderecoService) {}
+  constructor(private readonly enderecoService: EnderecoService) { }
 
   @Post()
   create(@Body() createEnderecoDto: CreateEnderecoDto) {
@@ -29,6 +29,9 @@ export class EnderecoController {
     @Param('id') id: string,
     @Body() updateEnderecoDto: UpdateEnderecoDto
   ) {
+    if (!updateEnderecoDto || Object.keys(updateEnderecoDto).length === 0) {
+      throw new NotFoundException('Nenhum dado enviado para atualização.');
+    }
     const endereco = await this.enderecoService.update(id, updateEnderecoDto);
     if (!endereco) throw new NotFoundException();
     return endereco;

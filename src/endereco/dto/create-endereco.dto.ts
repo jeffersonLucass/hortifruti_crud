@@ -3,9 +3,6 @@ import { IsNumber, IsString, IsOptional } from 'class-validator';
 export class CreateEnderecoDto {
   
   @IsString()
-  usuario_id: string;
-
-  @IsString()
   rua: string;
 
   @IsString()

@@ -9,11 +9,11 @@ GET http://localhost:3000/produtos
 
 POST http://localhost:3000/produtos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfREo4dVFTY09MWDF1cEI0dnR4TXFFIiwibm9tZVVzdWFyaW8iOiJqZWZmZXJzb24iLCJyb2xlIjoiTUFOQUdFUiIsImlhdCI6MTc0ODQzNDk3MywiZXhwIjoxNzQ4NDM4NTczfQ.MzhMob4qe3EpkGL8v-1GgrLTd_wAXHlOgtvI0MTevJs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfQldQSVNQSFhaSmxselctaGtxS21mIiwibm9tZVVzdWFyaW8iOiJHdXN0YXZvIE0iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MDYxODQsImV4cCI6MTc0OTYwOTc4NH0.EIOmXqofX6gWqDS8mpaUSf7lfXasz8XhGIer2XySVqc
 
 {
   
-  "nome":"linguiça de frango",
+  "nome":"teste",
   "descricao":"Carne bovina moída, ideal para diversos pratos.", 
   "preco": 4.50, 
   "categoria_id":"dev_7vATMgi6tuiNN8adQOnVU",
@@ -32,9 +32,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfWnNKd
 
 ###
 
-DELETE http://localhost:3000/produtos/dev__crtGvr2kgoP4sw3Ng1ZO
+DELETE http://localhost:3000/produtos/dev_upyFxt-jne7jRUVlPmDyW
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfWnNKdWRpMXFpZEF0dFQxXzR3MHduIiwibm9tZVVzdWFyaW8iOiJKZWZmZXJzb24gUm9kcmlndWVzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDgzOTMyOTAsImV4cCI6MTc0ODM5Njg5MH0.58KsjTWN3JkNFC1uxqFrQFDzfc-ggEsuvevnM_6Ffhg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfQldQSVNQSFhaSmxselctaGtxS21mIiwibm9tZVVzdWFyaW8iOiJHdXN0YXZvIE0iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MDYxODQsImV4cCI6MTc0OTYwOTc4NH0.EIOmXqofX6gWqDS8mpaUSf7lfXasz8XhGIer2XySVqc
 
 
 ###

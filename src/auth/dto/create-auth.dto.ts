@@ -1,4 +1,4 @@
-import { IsString, IsEmail, ValidateNested } from 'class-validator';
+import { IsString, IsEmail, ValidateNested, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 import { CreateEnderecoDto } from '../../endereco/dto/create-endereco.dto';
 
@@ -14,10 +14,10 @@ export class RegisterDto {
 
   @IsString()
   telefone: string;
-
+  @IsOptional()
   @ValidateNested()
   @Type(() => CreateEnderecoDto)
-  endereco: CreateEnderecoDto;
+  endereco?: CreateEnderecoDto;
 }
 
 export class LoginDto {
