@@ -47,7 +47,7 @@ npm run start:prod
 * `(manager)` nome: jefferson | senha: 123456 | token: (pegar o token gerado no swagger)
 * `(user)` nome: Kaion | senha: 123456 | token: (pegar o token gerado no swagger)
 
-`> Acesse hortifruti.http no src` e na parte de "//produtos", coloque o token do usuario escolhido gerado pelo swagger e utilize a extencao REST para testar o CRUD de produtos. 
+`> Acesse hortifruti.http no src` e na parte de "//produtos", coloque o token do usuario escolhido gerado no swagger e utilize a extenção REST para testar o CRUD de produtos. 
 
 ## 📂 Estrutura do Projeto
 
