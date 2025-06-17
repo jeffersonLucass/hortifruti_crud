@@ -6,6 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Categoria } from '../categorias/entities/categoria.entity';
 import { NotFoundException } from '@nestjs/common/exceptions/not-found.exception';
+import { Like } from 'typeorm';
 
 @Injectable()
 export class ProdutosService {
@@ -24,33 +25,43 @@ export class ProdutosService {
     return this.repository.save(produto);
   }
 
-  async findAll(categoriaId?: number) {
-    if (categoriaId) {
-      return this.repository.find({
-        where: {
-          categoria: {
-            id: categoriaId.toString(), // converte para string
-          },
-        },
-        relations: ['categoria'],
-      });
-    }
+  async findAll(categoriaId?: number, nome?: string) {
+  const where: any = {};
 
-    return this.repository.find({
-      relations: ['categoria'],
-    });
+  if (categoriaId) {
+    where.categoria = { id: categoriaId.toString() };
   }
+
+  if (nome) {
+    where.nome = Like(`%${nome}%`);
+  }
+
+  return this.repository.find({
+    where,
+    relations: ['categoria'],
+  });
+}
 
   findOne(id: string) {
     return this.repository.findOneBy({ id });
   }
 
   async update(id: string, dto: UpdateProdutoDto) {
-    const produtos = await this.repository.findOneBy({ id });
-    if (!produtos) return null;
-    this.repository.merge(produtos, dto);
-    return this.repository.save(produtos);
+  const produto = await this.repository.findOneBy({ id });
+  if (!produto) return null;
+
+  // Se vier categoria_id, busca a categoria e associa ao produto
+  if ((dto as any).categoria_id) {
+    const categoria = await this.categoriaRepository.findOneBy({ id: (dto as any).categoria_id });
+    if (!categoria) throw new NotFoundException('Categoria não encontrada');
+    this.repository.merge(produto, { ...dto, categoria });
+    delete (produto as any).categoria_id; // Remove categoria_id para não tentar salvar campo inexistente
+  } else {
+    this.repository.merge(produto, dto);
   }
+
+  return this.repository.save(produto);
+}
 
   async remove(id: string) {
     const produtos = await this.repository.findOneBy({ id });

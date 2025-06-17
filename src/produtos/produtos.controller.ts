@@ -19,9 +19,9 @@ export class ProdutosController {
   }
 
   @Get()
-  findAll(@Request() req, @Query('categoria') categoria?: string) {
+  findAll(@Request() req, @Query('categoria') categoria?: string, @Query('nome') nome?: string) {
     const categoriaId = categoria ? parseInt(categoria, 10) : undefined;
-    return this.produtosService.findAll(categoriaId);
+    return this.produtosService.findAll(categoriaId, nome);
   }
 
   @Get(':id')
