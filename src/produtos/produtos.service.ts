@@ -18,12 +18,23 @@ export class ProdutosService {
   ) { }
 
   async create(dto: CreateProdutoDto) {
-    const { categoria_id, ...rest } = dto;
-    const categoria = await this.categoriaRepository.findOneBy({ id: categoria_id });
-    if (!categoria) throw new NotFoundException('Categoria não encontrada');
-    const produto = this.repository.create({ ...rest, categoria });
-    return this.repository.save(produto);
+  const { categoria_id, nova_categoria, ...rest } = dto;
+  let categoria: Categoria | undefined;
+
+  if (categoria_id) {
+    const categoriaEncontrada = await this.categoriaRepository.findOneBy({ id: categoria_id });
+    if (!categoriaEncontrada) throw new NotFoundException('Categoria não encontrada');
+    categoria = categoriaEncontrada;
+  } else if (nova_categoria) {
+    categoria = this.categoriaRepository.create({ nome: nova_categoria });
+    await this.categoriaRepository.save(categoria);
+  } else {
+    throw new NotFoundException('Informe uma categoria existente ou crie uma nova.');
   }
+
+  const produto = this.repository.create({ ...rest, categoria });
+  return this.repository.save(produto);
+}
 
   async findAll(categoriaId?: number, nome?: string) {
   const where: any = {};
